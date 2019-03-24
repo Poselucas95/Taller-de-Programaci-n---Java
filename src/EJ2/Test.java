@@ -1,4 +1,4 @@
-package EJ1;
+package EJ2;
 
 public class Test {
 
