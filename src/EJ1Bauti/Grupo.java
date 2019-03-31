@@ -68,7 +68,7 @@ public class Grupo {
     }
 
     public void vaciar(){
-        this.integrantes = new ArrayList<>();
+        this.integrantes.clear();
     }
 
 
