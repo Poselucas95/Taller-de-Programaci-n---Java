@@ -63,6 +63,46 @@ public class GastosAnuales {
         return total;
     }
 
+    private double[][] consolidadoDeGastos(){
+        // Por cada mes tengo un array de rubros
+        double[][] gastos = new double[Mes.values().length][this.listaRubro.size()];
+        // Llenar matriz con los gastos de cada rubro por cada mes
+        Mes[] meses = Mes.values();
+        for(int i = 0; i< gastos.length; i++){
+            for(int j = 0; i < gastos[0].length; j++){
+                gastos[i][j] = this.listaRubro.get(j).getTotalGastos(meses[i-1]);
+            }
+        }
+        return  gastos;
+    }
+
+    public double gastoAcumulado(String nombreRubro){
+        Rubro rubroEnc = buscarRubro(nombreRubro);
+        double gastoAcum = 0;
+        Mes[] meses = Mes.values();
+        if (rubroEnc != null){
+            for(Mes mes: meses){
+                gastoAcum += rubroEnc.getTotalGastos(mes);
+            }
+        }else{
+            return -1;
+        }
+        return gastoAcum;
+    }
+
+    public void informarMesMayorConsumo(){
+        Mes[] meses = Mes.values();
+        double valorMaximo = 0;
+        List<Mes> listaMesesGanadores = new ArrayList<>();
+        for (Mes mes: meses) {
+            //TODO: define logic
+            double gastoAcumuladoMesIter = gastoAcumulado(mes);
+            if(gastoAcumuladoMesIter > valorMaximo) {
+
+            }
+        }
+    }
+
 
 
 
