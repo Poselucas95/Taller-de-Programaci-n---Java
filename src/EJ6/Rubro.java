@@ -23,8 +23,12 @@ public class Rubro {
         return this.gastosPorMes[mes.ordinal()];
     }
 
+    public double[] getGastosPorMes() {
+        return gastosPorMes;
+    }
+
     public String getNombre() {
-        return nombre;
+        return nombre.toLowerCase();
     }
 
 
