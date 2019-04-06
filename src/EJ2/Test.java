@@ -8,7 +8,7 @@ public class Test {
 	public static void main(String[] args) {
 		ArrayList<Corredor> lista = new ArrayList<Corredor>();
 		
-		Corredor corredor1 = new Corredor("pepe", 0.2);
+		Corredor corredor1 = new Corredor("pepe", 0.1);
 		Corredor corredor2 = new Corredor("JORGE", 0.3);
 		Corredor corredor3 = new Corredor("toto", 0.2);
 		Corredor corredor4 = new Corredor("tata", 0.1);
