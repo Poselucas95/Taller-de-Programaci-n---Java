@@ -28,12 +28,13 @@ public class Carrera {
 			}else if (corredores.getTiempo()==ganadores.get(0).getTiempo()) {
 				ganadores.add(corredores);
 			}
-			
+		
 		}
 		
 		for(Corredor cResultado : ganadores) {
 			System.out.print("Corredor ganador: " + cResultado.getNombre());
 			System.out.println();
+			System.out.print("Corredor ganador: " + cResultado.getTiempo());
 		}
 		
 		

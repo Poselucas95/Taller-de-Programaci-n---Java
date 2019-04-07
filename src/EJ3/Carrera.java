@@ -2,12 +2,10 @@ package EJ3;
 
 import java.util.ArrayList;
 
+
 public class Carrera {
 	private String especialidad;
 	private ArrayList<Corredor> listaCorredores = null;
-	private ArrayList<Corredor> primerosCorredores;
-	private ArrayList<Corredor> segundosCorredores;
-	private ArrayList<Corredor> tercerosCorredores;
 	private Posicion puestoA;
 	private Posicion puestoB;
 	private Posicion puestoC;
@@ -17,12 +15,10 @@ public class Carrera {
 	public  Carrera(ArrayList<Corredor> list, String especialidad) {
 		this.setEspecialidad(especialidad);
 		this.setListaCorredores(list);
-		ArrayList<Corredor> primerosCorredores = new ArrayList<Corredor>();
-		ArrayList<Corredor> segundosCorredores = new ArrayList<Corredor>();
-		ArrayList<Corredor> tercerosCorredores = new ArrayList<Corredor>();
-		puestoA = new Posicion(1, 99.9, primerosCorredores);
-		puestoB = new Posicion(2, 99.9, segundosCorredores);
-		puestoC = new Posicion(3, 99.9, tercerosCorredores);
+		puestoA = new Posicion(1, 99.9);
+		puestoB = new Posicion(2, 99.9);
+		puestoC = new Posicion(3, 99.9);
+
 	}
 	
 	public  Carrera() {
@@ -33,94 +29,100 @@ public class Carrera {
 	
 	public void verificarGanadores() {
 		ArrayList<Corredor> lista = this.getListaCorredores();
-		ArrayList<Corredor> primerPuesto = this.getPrimerosCorredores();
-		ArrayList<Corredor> segundoPuesto = this.getSegundosCorredores();
-		ArrayList<Corredor> tercerPuesto = this.getTercerosCorredores();
 		Posicion auxPrimero;
 		Posicion auxSegundo;
 		Posicion auxTercero;
 		
 		for(Corredor corredor : lista){	
-			if(corredor.getTiempo() < traerPrimerPuesto().getTiempo() ) {
-				traerTercerPuesto().getCorredores().clear();
-				traerTercerPuesto().getCorredores().add(corredor);
-				traerTercerPuesto().setTiempo(corredor.getTiempo());
+			if(corredor.getTiempo() < puestoA.getTiempo() ) {
+				puestoC = new Posicion(3, corredor.getTiempo());
+				puestoC.getCorredores().add(corredor);
+				puestoC.setTiempo(corredor.getTiempo());
+				//Se guardan los nuevos puestos en variables.
+				auxPrimero = puestoC;
+				auxSegundo = puestoA;
+				auxTercero = puestoB;
+				//Se le asignan a los nuevos puestos las corresponientes posiciones.
+				auxPrimero.setPos(1);
+				auxSegundo.setPos(2);
+				auxTercero.setPos(3);
+				//Se remplazan las nuevas posiciones en los objs de posiciones.
+				puestoA = auxPrimero;
+				puestoB = auxSegundo;
+				puestoC = auxTercero;
 				
-				auxSegundo = traerPrimerPuesto();
-				auxTercero = traerSegundoPuesto();
-				
-				setPrimerPuesto(traerTercerPuesto(), 1);
-				setSegundoPuesto(auxSegundo, 2);
-				setTercerPuesto(auxTercero, 3);
-				
-				System.out.print(traerSegundoPuesto().getTiempo());
 			}
+			//Si el corredor es igual al puesto uno, se agrega a la lista del mejor puesto.
+			else if(corredor.getTiempo() == puestoA.getTiempo()) {
+				puestoA.getCorredores().add(corredor);	
+			}
+			//Si es menor que el puesto numero 2, lo remplazamos y colocamos al antiguo puesto 2 como puesto 3.
+			else if(corredor.getTiempo() < puestoB.getTiempo()) {
+				puestoC = new Posicion(3, corredor.getTiempo());
+				puestoC.getCorredores().add(corredor);
+				puestoC.setTiempo(corredor.getTiempo());
+				//Se guardan los nuevos puestos en variables.
+				auxSegundo = puestoC;
+				auxTercero = puestoB;
+				//Se le asignan a los nuevos puestos las corresponientes posiciones.
+				auxSegundo.setPos(2);
+				auxTercero.setPos(3);
+				//Se remplazan las nuevas posiciones en los objs de posiciones.
+				puestoB = auxSegundo;
+				puestoC = auxTercero;
+			}
+			//Si el corredor es igual al puesto dos, se agrega a la lista del segundo puesto.
+			else if(corredor.getTiempo() == puestoB.getTiempo()) {
+				puestoB.getCorredores().add(corredor);	
+			}
+			//Si es menor que el puesto numero 3, lo remplazamos.
+			else if(corredor.getTiempo() < puestoB.getTiempo()) {
+				puestoC = new Posicion(3, corredor.getTiempo());
+				puestoC.getCorredores().add(corredor);
+				puestoC.setTiempo(corredor.getTiempo());
+			}
+			//Si el corredor es igual al puesto tres, se agrega a la lista del tercer puesto.
+			else if(corredor.getTiempo() == puestoC.getTiempo()) {
+				puestoC.getCorredores().add(corredor);	
+			}
+			
+			
 		}
 		
-	
+		mostrarPosicionesFinales();
+		
+
+
 		
 	}
 	
 	
-	private void setTercerPuesto(Posicion corredores, int posicion) {
-		traerTercerPuesto().setCorredores(corredores.getCorredores());
-		traerTercerPuesto().setPos(posicion);
-		traerTercerPuesto().setTiempo(corredores.getTiempo());
-		
-	}
-	
-	private void setSegundoPuesto(Posicion corredores, int posicion) {
-		traerSegundoPuesto().setCorredores(corredores.getCorredores());
-		traerSegundoPuesto().setPos(posicion);
-		traerSegundoPuesto().setTiempo(corredores.getTiempo());
-		
-	}
-	
-	private void setPrimerPuesto(Posicion corredores, int posicion) {
-		traerPrimerPuesto().setCorredores(corredores.getCorredores());
-		traerPrimerPuesto().setPos(posicion);
-		traerPrimerPuesto().setTiempo(corredores.getTiempo());
-		
-	}
-	
-	
-	private Posicion traerTercerPuesto() {
-		Posicion pos = new Posicion();
-		if(puestoA.getPos()==3) {
-			pos = puestoA;
-		}else if(puestoB.getPos()==3){
-			pos = puestoB;
-		}else if(puestoC.getPos()==3) {
-			pos = puestoC;
+	public void mostrarPosicionesFinales() {
+		//Se muestran los resultados finales de los primeros 3 puestos
+		System.out.print("Corredores en primer lugar: " );
+		for(Corredor cResultado : puestoA.getCorredores()) {
+			System.out.print(cResultado.getNombre() + "  ");
 		}
-		return pos;
-	}
-	
-	private Posicion traerSegundoPuesto() {
-		Posicion pos = new Posicion();
-		if(puestoA.getPos()==2) {
-			pos = puestoA;
-		}else if(puestoB.getPos()==2){
-			pos = puestoB;
-		}else if(puestoC.getPos()==2) {
-			pos = puestoC;
+		System.out.println();
+		System.out.println("Tiempo: " + puestoA.getTiempo());
+		System.out.println();
+		
+		System.out.print("Corredores en segundo lugar: ");
+		for(Corredor cResultado : puestoB.getCorredores()) {
+			System.out.print(cResultado.getNombre()  + "  ");
 		}
-		return pos;
-	}
-	
-	private Posicion traerPrimerPuesto() {
-		Posicion pos = new Posicion();
-		if(puestoA.getPos()==1) {
-			pos = puestoA;
-		}else if(puestoB.getPos()==1){
-			pos = puestoB;
-		}else if(puestoC.getPos()==1) {
-			pos = puestoC;
+		System.out.println();
+		System.out.println("Tiempo: " + puestoB.getTiempo());
+		System.out.println();
+		
+		System.out.print("Corredores en tercer lugar: ");
+		for(Corredor cResultado : puestoC.getCorredores()) {
+			System.out.print(cResultado.getNombre()  + "  ");
 		}
-		return pos;
+		System.out.println();
+		System.out.println("Tiempo: " + puestoC.getTiempo());
+		System.out.println();
 	}
-	
-	
 	
 	//GETTERS AND SETTERS
 	
@@ -142,13 +144,6 @@ public class Carrera {
 	}
 	
 
-	public ArrayList<Corredor> getPrimerosCorredores() {
-		return primerosCorredores;
-	}
-
-	public void setPrimerosCorredores(ArrayList<Corredor> primerosCorredores) {
-		this.primerosCorredores = primerosCorredores;
-	}
 
 	public Posicion getPuestoA() {
 		return puestoA;
@@ -174,21 +169,6 @@ public class Carrera {
 		this.puestoC = puestoC;
 	}
 
-	public ArrayList<Corredor> getSegundosCorredores() {
-		return segundosCorredores;
-	}
-
-	public void setSegundosCorredores(ArrayList<Corredor> segundosCorredores) {
-		this.segundosCorredores = segundosCorredores;
-	}
-
-	public ArrayList<Corredor> getTercerosCorredores() {
-		return tercerosCorredores;
-	}
-
-	public void setTercerosCorredores(ArrayList<Corredor> tercerosCorredores) {
-		this.tercerosCorredores = tercerosCorredores;
-	}
 
 
 	

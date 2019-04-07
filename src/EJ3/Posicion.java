@@ -11,10 +11,11 @@ public class Posicion {
 		
 	}
 	
-	public Posicion(int pos, double tiempo, ArrayList<Corredor> corredores) {
-		this.setCorredores(corredores);
+	public Posicion(int pos, double tiempo) {
+		corredores = new ArrayList<Corredor>();
 		this.setPos(pos);
 		this.setTiempo(tiempo);
+		
 	}
 	
 	
