@@ -1,1 +1,0 @@
-Taller de Programación - Java
