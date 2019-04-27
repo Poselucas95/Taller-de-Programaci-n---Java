@@ -1,6 +1,4 @@
-package ort.tp2.ej1y2;
-
-import java.util.Locale;
+package ej1y2;
 
 public class Vendedor extends Subcontratado {
 

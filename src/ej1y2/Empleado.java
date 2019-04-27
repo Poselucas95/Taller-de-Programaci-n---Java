@@ -1,4 +1,4 @@
-package ort.tp2.ej1y2;
+package ej1y2;
 
 public class Empleado {
 
