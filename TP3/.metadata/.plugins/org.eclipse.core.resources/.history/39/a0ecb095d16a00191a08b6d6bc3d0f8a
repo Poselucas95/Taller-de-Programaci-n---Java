@@ -1,0 +1,8 @@
+package ar.edu.ort.tp3;
+
+public class NumeroTelefonico {
+	private int caracteristica;
+	private int nroDeAbonado;
+	private int codigoPais;
+	private TipoDeLinea tipo;
+}

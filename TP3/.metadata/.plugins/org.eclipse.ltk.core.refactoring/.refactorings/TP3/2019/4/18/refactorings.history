@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Redenominar el paquete &apos;ar.edu.ort.tp3&apos; como &apos;ar.edu.ort.tp3.ej1&apos;&#x0D;&#x0A;- Proyecto original: &quot;TP3&quot;&#x0D;&#x0A;- Elemento original: &apos;TP3/src/ar.edu.ort.tp3&apos;&#x0D;&#x0A;- Elemento redenominado: &apos;TP3/src/ar.edu.ort.tp3.ej1&apos;&#x0D;&#x0A;- Actualizar referencias a elemento refactorizado&#x0D;&#x0A;- Actualizar apariciones textuales en comentarios y series" description="Redenominar paquete &apos;ar.edu.ort.tp3&apos;" flags="589830" hierarchical="false" id="org.eclipse.jdt.ui.rename.package" input="/src&lt;ar.edu.ort.tp3" name="ar.edu.ort.tp3.ej1" qualified="false" references="true" stamp="1556580580942" textual="false" version="1.0"/>
+</session>

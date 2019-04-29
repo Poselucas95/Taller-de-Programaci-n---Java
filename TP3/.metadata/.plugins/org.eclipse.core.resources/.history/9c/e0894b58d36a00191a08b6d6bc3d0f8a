@@ -1,0 +1,11 @@
+package ar.edu.ort.tp3;
+
+public class Persona {
+	private String apellido;
+	private String nombre;
+	
+	public Persona(String nombre, String apellido){
+		this.apellido = apellido;
+		this.nombre = nombre;
+	}
+}

@@ -1,0 +1,50 @@
+package ar.edu.ort.tp3;
+
+public class NumeroTelefonico {
+	private int caracteristica;
+	private int nroDeAbonado;
+	private int codigoPais;
+	private TipoDeLinea tipo;
+	
+	public NumeroTelefonico(int caracteristica, int nroDeAbonado, int codigoPais, TipoDeLinea tipo){
+		this.caracteristica = caracteristica;
+		this.nroDeAbonado = nroDeAbonado;
+		this.codigoPais = codigoPais;
+		this.tipo = tipo;
+	}
+
+	public int getCaracteristica() {
+		return caracteristica;
+	}
+
+	public void setCaracteristica(int caracteristica) {
+		this.caracteristica = caracteristica;
+	}
+
+	public int getNroDeAbonado() {
+		return nroDeAbonado;
+	}
+
+	public void setNroDeAbonado(int nroDeAbonado) {
+		this.nroDeAbonado = nroDeAbonado;
+	}
+
+	public int getCodigoPais() {
+		return codigoPais;
+	}
+
+	public void setCodigoPais(int codigoPais) {
+		this.codigoPais = codigoPais;
+	}
+
+	public TipoDeLinea getTipo() {
+		return tipo;
+	}
+
+	public void setTipo(TipoDeLinea tipo) {
+		this.tipo = tipo;
+	}
+	
+	
+	
+}

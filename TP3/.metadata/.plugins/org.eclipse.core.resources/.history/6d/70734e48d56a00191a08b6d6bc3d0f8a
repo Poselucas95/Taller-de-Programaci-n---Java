@@ -1,0 +1,11 @@
+package ar.edu.ort.tp3;
+
+public class test {
+
+	public static void main(String[] args) {
+		// TODO Apéndice de método generado automáticamente
+		persona1 = new Persona(Lucas, Pose);
+		
+	}
+
+}

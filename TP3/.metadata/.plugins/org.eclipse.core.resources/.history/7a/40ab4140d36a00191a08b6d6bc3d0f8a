@@ -1,0 +1,6 @@
+package ar.edu.ort.tp3;
+
+public class Persona {
+	private String apellido;
+	private String nombre;
+}

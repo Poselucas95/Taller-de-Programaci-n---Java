@@ -1,0 +1,10 @@
+package ar.edu.ort.tp3;
+
+public class Email {
+	private String cuenta;
+	private String dominio;
+	
+	public Email(String email){
+		
+	}
+}

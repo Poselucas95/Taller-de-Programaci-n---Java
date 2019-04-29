@@ -1,0 +1,29 @@
+package ar.edu.ort.tp3;
+
+public class Email {
+	private String cuenta;
+	private String dominio;
+	
+	public Email(String email){
+		String[] mail = email.split("@");
+		cuenta = mail[0];
+		cuenta = mail[1];
+	}
+
+	public String getCuenta() {
+		return cuenta;
+	}
+
+	public void setCuenta(String cuenta) {
+		this.cuenta = cuenta;
+	}
+
+	public String getDominio() {
+		return dominio;
+	}
+
+	public void setDominio(String dominio) {
+		this.dominio = dominio;
+	}
+	
+}

@@ -1,0 +1,6 @@
+package ar.edu.ort.tp3;
+
+public class Email {
+	private String email;
+	
+}
