@@ -1,0 +1,9 @@
+package ar.edu.ort.tp1.tp3ej3;
+import ar.edu.ort.tp1.tp3ej1.Persona;
+public class Hito {
+	private String fecha;
+	private String descripcion;
+	ArrayList<Persona> personasInvolucradas;
+	
+	
+}

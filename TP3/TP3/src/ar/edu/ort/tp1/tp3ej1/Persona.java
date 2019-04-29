@@ -1,6 +1,8 @@
 package ar.edu.ort.tp1.tp3ej1;
 
 import ar.edu.ort.tp1.tp3ej2.Mascota;
+import ar.edu.ort.tp1.tp3ej3.Hito;
+
 import java.util.ArrayList;
 
 public class Persona {
@@ -8,8 +10,8 @@ public class Persona {
 	private String nombre;
 	ArrayList<Email> iMails;
 	ArrayList<NumeroTelefonico> iTelefonos;
-	private ArrayList<Mascota> iMascotas;
-	
+	ArrayList<Mascota> iMascotas;
+	ArrayList<Hito> iHitos;
 	
 	public Persona(String nombre, String apellido){
 		this.apellido = apellido;
@@ -17,7 +19,7 @@ public class Persona {
 		iMails = new ArrayList<Email>();
 		iTelefonos = new ArrayList<NumeroTelefonico>();
 		iMascotas = new ArrayList<Mascota>();
-		
+		iHitos = new ArrayList<Hito>();
 	}
 	
 	public void agregarTelefono(String caracteristica, String nroDeAbonado, String codigoPais, TipoDeLinea tipo){
@@ -28,6 +30,10 @@ public class Persona {
 	}
 	public void agregarMascota(String nombre, String tipo){
 		iMascotas.add(new Mascota(nombre, tipo));
+	}
+	
+	public void agregarHito(Hito hito){
+		iHitos.add(hito);
 	}
 	
 	public void mostrarTodo(){
@@ -42,6 +48,10 @@ public class Persona {
 		System.out.println("Mascotas: ");
 		for(Mascota mascota : iMascotas){
 			System.out.println(mascota.getValor());
+		}
+		System.out.println("Momentos importantes: ");
+		for(Hito hito : iHitos){
+			System.out.println(hito.getValor());
 		}
 	}
 
