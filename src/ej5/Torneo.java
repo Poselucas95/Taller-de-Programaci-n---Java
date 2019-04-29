@@ -81,7 +81,6 @@ public class Torneo {
 		// Para poder actualizarlo
 		for(Equipo e : listaEquipo){
 			if (e.equals(equipo)){
-				e.agregarOrestarPuntos();
 				return e;
 			}
 		}
