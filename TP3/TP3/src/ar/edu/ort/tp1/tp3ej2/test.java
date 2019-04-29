@@ -1,0 +1,19 @@
+package ar.edu.ort.tp1.tp3ej2;
+
+import ar.edu.ort.tp1.tp3ej1.*;
+
+
+public class test {
+
+	public static void main(String[] args) {
+		Persona persona1 = new Persona("Lucas", "Pose");
+		persona1.agregarEmail("poselucas@gmail.com");
+		persona1.agregarEmail("Pepe@gmail.com");
+		persona1.agregarTelefono("549", "1121", "021", TipoDeLinea.FAX );
+		persona1.agregarTelefono("549", "1131", "031", TipoDeLinea.FIJO );
+		persona1.agregarTelefono("549", "1141", "041", TipoDeLinea.CELULAR );
+		persona1.agregarMascota("Pluto", "Perro");
+		persona1.mostrarTodo();
+	}
+
+}
