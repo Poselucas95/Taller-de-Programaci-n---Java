@@ -13,9 +13,19 @@ public class Hito {
 		this.descripcion = descripcion;
 		personasInvolucradas = new ArrayList<Persona>();
 	}
+	
+	
 
-	public String getValor(){
-		return fecha+": ( " + personasInvolucradas + " )"+ descripcion; 
+	public void getValor(){
+		System.out.println(fecha);
+		System.out.println(descripcion);
+		for(Persona persona : personasInvolucradas){
+			System.out.println(persona.getApellido() + ", " + persona.getNombre());
+		}
+	}
+	
+	public void agregarPersona(Persona persona){
+		personasInvolucradas.add(persona);
 	}
 	
 	public String getFecha() {

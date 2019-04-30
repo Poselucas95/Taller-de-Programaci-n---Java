@@ -51,7 +51,7 @@ public class Persona {
 		}
 		System.out.println("Momentos importantes: ");
 		for(Hito hito : iHitos){
-			System.out.println(hito.getValor());
+			hito.getValor();
 		}
 	}
 
