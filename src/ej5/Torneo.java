@@ -7,17 +7,11 @@ public class Torneo {
 	
 	private int jugadoresPermitidos;
 	private List<Jornada> jornadas;
-	
-	
-	
+
 	public Torneo(int jugadoresPermitidos, List<Jornada> jornadas) {
 		this.jugadoresPermitidos = jugadoresPermitidos;
 		this.jornadas = jornadas;
 	}
-
-	public void calcularPuntosJornadas() {
-		 
-	} 
 
 	public int getJugadoresPermitidos() {
 		return jugadoresPermitidos;
@@ -47,9 +41,11 @@ public class Torneo {
 				if (golesLocal > golesVisitante) {  // Gano local y Perdio el visitante
 					// Doy puntos por ganar y perder
 					equipoLocal.agregarPuntos(puntosPorGanar(golesLocal, golesVisitante, puntosPorGanar, puntosPorGanarMas4Goles, puntosPorNoRivalNoConvirtioGoles));
+					equipoVisitante.agregarPuntos(puntosPorPerder);
 
 				} else if (golesVisitante > golesLocal) { // gano visitante y Perdio local
 					equipoVisitante.agregarPuntos(puntosPorGanar(golesVisitante, golesLocal, puntosPorGanar, puntosPorGanarMas4Goles, puntosPorNoRivalNoConvirtioGoles));
+					equipoLocal.agregarPuntos(puntosPorPerder);
 
 				} else if (golesVisitante == golesLocal) { // Si empato
 					if (golesLocal > 3){
@@ -63,7 +59,11 @@ public class Torneo {
 			}
 		}
 
-		// TODO:  Muestro la lista
+		// Muestro la lista
+		System.out.println("Tabla de posiciones al cabo de " + this.jornadas.size() + " fechas");
+		for(Equipo equipo: listaEquipos){
+			equipo.mostrarPuntos();
+		}
 
 	}
 

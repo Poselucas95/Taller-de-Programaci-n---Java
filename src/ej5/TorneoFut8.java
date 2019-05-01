@@ -6,10 +6,9 @@ public class TorneoFut8 extends Torneo{
 
 	public TorneoFut8(int jugadoresPermitidos, List<Jornada> jornadas) {
 		super(jugadoresPermitidos, jornadas);
-		// TODO Auto-generated constructor stub
 	}
 	public void mostrarPuntos() {
-		// TODO Auto-generated method stub
+		System.out.println("Torneo de futbol 8");
 		super.mostrarPuntos(3,1,1, 0,
 				 0,0);
 	}

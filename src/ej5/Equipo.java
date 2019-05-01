@@ -17,6 +17,10 @@ public class Equipo {
 			}		
 	}
 
+	public void mostrarPuntos(){
+		System.out.println(nombre + ": " + puntos);
+	}
+
 	@Override
 	public boolean equals(Object obj) {
 		if (obj == null)
