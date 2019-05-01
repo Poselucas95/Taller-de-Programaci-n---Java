@@ -9,12 +9,16 @@ public class Equipo {
 		this.nombre = nombre;
 	}
 	
-	public void agregarOrestarPuntos(int puntos) {
+	public void agregarPuntos(int puntos) {
 			if (this.puntos + puntos < 0) {
-				this.puntos = 0;
+				return;
 			} else {
 				this.puntos += puntos;
 			}		
+	}
+
+	public void mostrarPuntos(){
+		System.out.println(nombre + ": " + puntos);
 	}
 
 	@Override

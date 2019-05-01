@@ -10,6 +10,7 @@ public class TorneoFut11 extends Torneo {
 
 	public void mostrarPuntos() {
 		// TODO Auto-generated method stub
+		System.out.println("Torneo de futbol 11");
 		super.mostrarPuntos(3,0,1, 0,
 				 0,0);
 	}
