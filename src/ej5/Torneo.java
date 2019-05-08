@@ -36,6 +36,18 @@ public class Torneo {
 				Equipo equipoLocal = buscarEquipoEnLista(partido.getEquipoLocal(), listaEquipos);
 				Equipo equipoVisitante = buscarEquipoEnLista(partido.getEquipoVisitante(), listaEquipos);
 
+				boolean encontreLocalEnLista = equipoLocal != null;
+				boolean encontreVisitanteEnLista = equipoVisitante != null;
+				if (!encontreLocalEnLista){
+					// No encontre el equipo, entonces uso el del partido
+					equipoLocal = partido.getEquipoLocal();
+				}
+				if (!encontreVisitanteEnLista){
+					// No encontre el equipo, entonces uso el del partido
+					equipoVisitante = partido.getEquipoVisitante();
+				}
+
+				// Actualizo puntos
 
 				// Si gano o perdio
 				if (golesLocal > golesVisitante) {  // Gano local y Perdio el visitante
@@ -56,6 +68,21 @@ public class Torneo {
 						equipoVisitante.agregarPuntos(puntosPorEmpate);
 					}
 				}
+				// Update la lista de equipos
+				if (!encontreLocalEnLista){
+					listaEquipos.add(equipoLocal);
+				} else { // Ya se encontraba, updateo
+					int i = listaEquipos.indexOf(equipoLocal);
+					listaEquipos.set(i, equipoLocal);
+				}
+				if (!encontreVisitanteEnLista){
+					// No encontre el equipo, entonces lo agrego a la lista actualizado
+					listaEquipos.add(equipoVisitante);
+				} else { // Ya se encontraba, updateo
+					int i = listaEquipos.indexOf(equipoVisitante);
+					listaEquipos.set(i, equipoVisitante);
+				}
+
 			}
 		}
 
@@ -70,7 +97,7 @@ public class Torneo {
 	public int puntosPorGanar(int golesGanador, int golesPerdedor, int puntosPorGanar, int puntosPorGanarMas4, int puntosPorRivalNoConvirtio){ // Devuelve los puntos correspondientes por ganar
 		if ((golesGanador - golesPerdedor) > 4) {
 			return puntosPorGanarMas4;
-		} else if (golesVisitante == 0) {
+		} else if (golesPerdedor == 0) {
 			return puntosPorRivalNoConvirtio;
 		} else {
 			return puntosPorGanar;
@@ -84,7 +111,7 @@ public class Torneo {
 				return e;
 			}
 		}
-		// No encontre nada, devuelvo con el que busque
-		return equipo;
+		// No encontre nada
+		return null;
 	}
 }
