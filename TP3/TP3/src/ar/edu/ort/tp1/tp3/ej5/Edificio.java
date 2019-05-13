@@ -24,36 +24,41 @@ public class Edificio {
 	}
 	
 	public void realizarMudanza(int pisoOrigen, String deptoOrigen, int pisoDestino, String deptoDestino) {
-		List<Persona> personasAmudar = new ArrayList<>();
-		List<Mueble> mueblesAmudar = new ArrayList<>();
-		List<Vivienda> listaActualizada = new ArrayList<>();
-		boolean encontreDestino = false;
-		boolean encontreOrigen = false;
 
-		for(Vivienda vivienda: viviendas) {
-			Direccion direcVivienda = vivienda.getDireccion();
+		int indexViviendaOrigen = -1;
+		int indexViviendaDestino = -1;
+		
+		for(int i = 0; i < viviendas.size(); i++) {
+			Vivienda viviendaIter = viviendas.get(i);
+			Direccion direcVivienda = viviendaIter.getDireccion();
 			if (direcVivienda.getPiso() == pisoOrigen && direcVivienda.getDepartamento().equals(deptoOrigen))
 			{
 				// Encontramos vivienda origen
-				encontreOrigen = true;
-				personasAmudar = vivienda.getHabitantes();
-				mueblesAmudar = vivienda.getMuebles();
-				vivienda.vaciarVivienda();
+				indexViviendaOrigen = i;
 			} else if (direcVivienda.getPiso() == pisoDestino && direcVivienda.getDepartamento().equals(deptoDestino)) 
 			{
 				// Encontramos vivienda destino
-				encontreDestino = true;
-				if (encontreOrigen) { // Si encontre previamente la de origen
-					//Realizo mudanza
-					vivienda.setHabitantes(personasAmudar);
-					vivienda.setMuebles(mueblesAmudar);
-				}
+				indexViviendaDestino = i;
 			}
-			listaActualizada.add(vivienda);
 		}
-		if (encontreOrigen && encontreDestino) { // Si pude realizar la mudanza entonces actualizo viviendas
+		if (indexViviendaOrigen != -1 && indexViviendaDestino != -1) { // Encontre vivienda para mudanza entonces la realizo
+			List<Persona> personasAmudar = new ArrayList<>();
+			List<Mueble> mueblesAmudar = new ArrayList<>();
+			Vivienda viviendaOrigen = viviendas.get(indexViviendaOrigen);
+			Vivienda viviendaDestino = viviendas.get(indexViviendaDestino);
+			// Tomo muebles y personas de la vivienda origen y la vacio
+			mueblesAmudar.addAll(viviendaOrigen.getMuebles());
+			personasAmudar.addAll(viviendaOrigen.getHabitantes()); 
+			viviendaOrigen.vaciarVivienda();
+			
+			// Mudo
+			viviendas.set(indexViviendaOrigen, viviendaOrigen); // Hago efectiva la mudanza en origen
+			viviendaDestino.setHabitantes(personasAmudar);
+			viviendaDestino.setMuebles(mueblesAmudar);
+			viviendas.set(indexViviendaDestino, viviendaDestino); // Hago efectiva la mudanza en destino
+
 			System.out.println("Se realizo mudanza del deptartamento: " + pisoOrigen + deptoOrigen + " al: " + pisoDestino + deptoDestino);
-			this.viviendas = listaActualizada;
+			
 			mostrarTodo();
 		}else {
 			System.out.println("No se realizo mudanza ya que no se encontro una de las viviendas.");
